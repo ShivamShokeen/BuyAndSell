@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Buy & Sell
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menuId="leftMenu"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="!userCredentials.UID" slot="end" [routerLink]="['/usercredentials','signin']" style="outline: none;">
+      <ion-icon name="person-add-outline" style="font-size: 28px;"></ion-icon> 
+      <ion-button>Sign in/Sign up</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end" *ngIf="userCredentials.userName" style="padding: 10px">
+      <ion-text>Welcome {{userCredentials.userName}}</ion-text>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-searchbar showCancelButton="focus" cancelButtonText="Custom Cancel" animated [(ngModel)]="searchText"
+    (ionChange)="filter()"></ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <ul *ngFor="let product of productPreview" [routerLink]="['/productdetails/',product.id]"
+    style="cursor: pointer;  outline: none;">
+    <li>
+      <ion-card>
+        <ion-card-content>
+          <img src="{{product.images}}" width="256px" height="200px"><br /><br />
+          <div class="ion-text-start">
+            <ion-label color="success">Name : </ion-label>
+            <ion-label>{{product.name}}</ion-label><br />
+            <ion-label color="success">Location : </ion-label>
+            <ion-label>{{product.location}}</ion-label><br />
+            <ion-label color="success">Quantity : </ion-label>
+            <ion-label>{{product.quantity}}</ion-label><br />
+            <ion-label color="success">Price : </ion-label>
+            <ion-label>{{product.price}}</ion-label><br />
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </li>
+  </ul>
+</ion-content>

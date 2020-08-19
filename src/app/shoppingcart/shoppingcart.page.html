@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Shopping cart</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menuId="leftMenu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="buyandsell.productQuantity.length == 0"  class="ion-text-center" style="font-size: xxx-large;padding: 30%;">
+    <ion-text color="medium">Cart is empty</ion-text>
+  </div>
+  <div *ngIf="buyandsell.productQuantity.length > 0"><br>
+    <ion-text *ngIf="buyandsell.Total" color="success" style="float: right;padding-right: 20px;">Total :
+      {{buyandsell.Total}}</ion-text><br />
+    <ion-grid *ngFor="let product of buyandsell.productQuantity">
+      <ion-card *ngIf="product.id != '' ">
+        <ion-card-title>
+          <ion-row>
+            <ion-col>
+              <ion-text color="primary">{{product.name}}</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-card-title>
+        <ion-row>
+          <ion-col size-md="4">
+            <br />
+            <img src={{product.images}} height=211px;>
+          </ion-col>
+          <ion-col size-md="8" style="padding-left: 10px;">
+            <br />
+            <ion-text color="success">Price : </ion-text> &nbsp;
+            <ion-text>{{product.price}}</ion-text><br />
+            <ion-text color="success">Quantity : </ion-text> &nbsp;
+            <ion-text>{{product.quantity}}</ion-text><br />
+            <ion-text color="success">Method of payment accepted by seller is : </ion-text>&nbsp;
+            <ion-text>{{product.methodOfPayment}}</ion-text><br />
+            <ion-text color="success">Property for :</ion-text>&nbsp;
+            <ion-text>{{product.propertyFor}}</ion-text><br />
+            <ion-text color="success">Location :</ion-text>&nbsp;
+            <ion-text>{{product.location}}</ion-text><br />
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-grid>
+    <ion-button *ngIf="buyandsell.productQuantity.length > 0" expand="block" fill="outline" type="submit"
+      (click)="readyForPayment()">Submit</ion-button>
+  </div>
+</ion-content>

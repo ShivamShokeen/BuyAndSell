@@ -1,0 +1,149 @@
+<ion-header>
+  <ion-toolbar color="primary" class="ion-text-center">
+    <ion-text>Edit product</ion-text>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="userCredentials.UID">
+    <ion-card-content>
+      <form [formGroup]="productUpdate">
+
+        <ion-item>
+          <ion-label position="stacked" color="success">Name</ion-label>
+          <ion-input type="text" formControlName="name" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" color="success">Image</ion-label>
+          <ion-input type="text" formControlName="images" #images required></ion-input>
+        </ion-item>
+        <img *ngIf="images.value" [src]="images.value" height="300px;" width="100%">
+        <ion-item>
+          <ion-label position="stacked" color="success">Quantity</ion-label>
+          <ion-input type="text" formControlName="quantity" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" color="success">Location</ion-label>
+          <ion-input type="text" formControlName="location" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" color="success">Price</ion-label>
+          <ion-input type="text" formControlName="price" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" color="success">Description</ion-label>
+          <ion-input type="text" formControlName="description"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" color="success">Category type</ion-label>
+          <ion-input type="text" formControlName="categoryType" required></ion-input>
+        </ion-item>
+
+        <div class="ion-text-center" *ngIf="product.categoryType =='Properties'">
+          <ion-text color="danger" style="font-size: x-large;">Property</ion-text>
+          <ion-item>
+            <ion-label position="stacked" color="success">Type</ion-label>
+            <ion-input type="text" formControlName="propType" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Facing</ion-label>
+            <ion-input type="text" formControlName="propFacing" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Maintenance</ion-label>
+            <ion-input type="text" formControlName="propMaintenance" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Lease aggrement</ion-label>
+            <ion-input type="text" formControlName="propLeaseAggrement" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Method of payment</ion-label>
+            <ion-input type="text" formControlName="propMethodOfPayment" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Offers</ion-label>
+            <ion-input type="text" formControlName="propOffers"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Security Features</ion-label>
+            <ion-input type="text" formControlName="propSecurityFeatures"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Alternative contact number</ion-label>
+            <ion-input type="number" formControlName="propAlternativeContactNumber"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Payment status</ion-label>
+            <ion-input type="text" formControlName="propPaymentStatus" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Payment renew</ion-label>
+            <ion-input type="text" formControlName="propPaymentRenew" required></ion-input>
+          </ion-item>
+          <ion-item *ngIf="product.Propertycategory.meal !=''">
+            <ion-label position="stacked" color="success">Meal</ion-label>
+            <ion-input type="text" formControlName="propMeal" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Property for</ion-label>
+            <ion-input type="text" formControlName="propPropertyFor" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Furnishing</ion-label>
+            <ion-input type="text" formControlName="propFurnishing" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Builtup area</ion-label>
+            <ion-input type="text" formControlName="propBuiltupArea" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Carpet area</ion-label>
+            <ion-input type="text" formControlName="propCarpetArea" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Total floors</ion-label>
+            <ion-input type="text" formControlName="propTotalFloors" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Floor number</ion-label>
+            <ion-input type="text" formControlName="propFloorNo" required></ion-input>
+          </ion-item>
+        </div>
+
+        <div class="ion-text-center" *ngIf="product.categoryType =='Mobile'">
+          <ion-text color="danger" style="font-size: x-large;">Mobile</ion-text>
+          <ion-item>
+            <ion-label position="stacked" color="success">Specification url</ion-label>
+            <ion-input type="text" formControlName="mobileSpecificationsUrl" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Color</ion-label>
+            <ion-input type="text" formControlName="mobileColor" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Software version</ion-label>
+            <ion-input type="text" formControlName="mobileSoftwareVersion" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Primary camera</ion-label>
+            <ion-input type="text" formControlName="mobilePrimaryCamera" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Secondary camera</ion-label>
+            <ion-input type="text" formControlName="mobileSecondaryCamera" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="success">Brand</ion-label>
+            <ion-input type="text" formControlName="mobileBrand" required></ion-input>
+          </ion-item>
+        </div>
+        <ion-button (click)="productSubmit()">Submit</ion-button>
+        <ion-button type="reset">Reset</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

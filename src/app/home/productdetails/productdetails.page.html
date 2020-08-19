@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title *ngFor="let product of productDetails">{{product.name}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons *ngFor="let product of productDetails" slot="end"
+      (click)="shoppingCart(product.id,product.name,product.images,product.price,product.Propertycategory.methodOfPayment,product.quantity,product.location,product.Propertycategory.propertyFor)">
+      <ion-button *ngIf="userCredentials.userId">
+        <ion-icon name="cart-outline" size="large"></ion-icon> &nbsp;&nbsp; Add to cart
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let product of productDetails">
+    <ion-card>
+      <ion-card-content class="ion-text-center">
+        <img src="{{product.images}}" height="295px" width="500px">
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <div *ngIf="product.categoryType == 'Properties'">
+
+          <ion-label color="primary">Property type : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.type}}</ion-label><br />
+          <ion-label color="primary">Property for : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.propertyFor}}</ion-label><br />
+          <ion-label color="primary">Location : </ion-label> &nbsp;
+          <ion-label>{{product.location}}</ion-label><br />
+          <ion-label color="primary">Quantity : </ion-label> &nbsp;
+          <ion-label>{{product.quantity}}</ion-label><br />
+          <ion-label color="primary">Price : </ion-label>&nbsp;
+          <ion-label>{{product.price}}</ion-label><br />
+          <ion-label color="primary">Alternative contaact number : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.alternativeContactNumber}}</ion-label><br />
+          <ion-label color="primary">Builtup Area : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.builtupArea}}</ion-label><br />
+          <ion-label color="primary">Carpet Area : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.carpetArea}}</ion-label><br />
+          <ion-label color="primary">Property facing : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.facing}}</ion-label><br />
+          <ion-label color="primary">Floor Number : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.floorNo}}</ion-label><br />
+          <ion-label color="primary">Furnishing : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.furnishing}}</ion-label><br />
+          <ion-label color="primary">Lease aggrement : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.leaseAggrement}}</ion-label><br />
+          <ion-label color="primary">Method of payment : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.methodOfPayment}}</ion-label><br />
+          <ion-label color="primary">Payment status : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.paymentStatus}}</ion-label><br />
+          <ion-label color="primary">Maintenance : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.maintenance}}</ion-label><br />
+          <ion-label color="primary">Payment renew : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.paymentRenew}}</ion-label><br />
+          <ion-label color="primary">Security features : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.securityFeatures}}</ion-label><br />
+          <ion-label color="primary">Total floors : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.totalFloors}}</ion-label><br />
+          <ion-label color="primary">Descriptions : </ion-label>&nbsp;
+          <ion-label>{{product.description}}</ion-label><br />
+          <ion-label color="primary" *ngIf="product.Propertycategory.meal">Meal : </ion-label>&nbsp;
+          <ion-label>{{product.Propertycategory.meal}}</ion-label><br />
+        </div>
+
+        <div *ngIf="product.categoryType == 'Mobile'">
+
+          <ion-label color="primary">Location : </ion-label> &nbsp;
+          <ion-label>{{product.location}}</ion-label><br />
+          <ion-label color="primary">Quantity : </ion-label> &nbsp;
+          <ion-label>{{product.quantity}}</ion-label><br />
+          <ion-label color="primary">Price : </ion-label>&nbsp;
+          <ion-label>{{product.price}}</ion-label><br />
+          <ion-label color="primary">Color : </ion-label>&nbsp;
+          <ion-label>{{product.MobileCategory.color}}</ion-label><br />
+          <ion-label color="primary">Primary camera : </ion-label>&nbsp;
+          <ion-label>{{product.MobileCategory.primaryCamera}}</ion-label><br />
+          <ion-label color="primary">Secondary camera : </ion-label>&nbsp;
+          <ion-label>{{product.MobileCategory.secondaryCamera}}</ion-label><br />
+          <ion-label color="primary">Software Version : </ion-label>&nbsp;
+          <ion-label>{{product.MobileCategory.softwareVersion}}</ion-label><br />
+          <ion-label color="primary">Specifications : </ion-label>&nbsp;
+          <a href="{{product.MobileCategory.specificationsUrl}}" target="_blank" color="success">Visit site</a><br />
+          <ion-label color="primary">Descriptions : </ion-label>&nbsp;
+          <ion-label>{{product.description}}</ion-label><br />
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
