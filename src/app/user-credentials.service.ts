@@ -618,7 +618,7 @@ export class UserCredentialsService {
   }
 
   fetchUserDetails() {
-    this.http.get('https://buyandsell-58d92.firebaseio.com//userAccounts.json').pipe(
+    this.http.get('https://buyandsell-58d92.firebaseio.com/userAccounts.json').pipe(
       map(responseData => {
         for (const key in responseData) {
           if (responseData.hasOwnProperty(key)) {

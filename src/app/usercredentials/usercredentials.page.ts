@@ -37,8 +37,8 @@ export class UsercredentialsPage implements OnInit {
   appVerifier: any;
   public recaptchaVerifier: firebase.auth.RecaptchaVerifier;
   constructor(private router: Router, private route: ActivatedRoute, public userCredentials: UserCredentialsService, private toastController: ToastController, private windowService: WindowService, private http: HttpClient, public alertController: AlertController,public modalController: ModalController) {
-    console.log(this.for)
     this.paramRequestType = this.route.snapshot.params['for'];
+    console.log(this.paramRequestType)
   }
 
   ngOnInit() {

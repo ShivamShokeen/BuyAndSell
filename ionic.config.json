@@ -1,5 +1,7 @@
 {
   "name": "BuyAndSell",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

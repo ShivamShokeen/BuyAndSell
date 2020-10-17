@@ -21,6 +21,10 @@ export class ShoppingcartPage implements OnInit {
     if(this.buyandsell.productQuantity.length > 0){
       this.http.post('https://buyandsell-58d92.firebaseio.com/shoppingCart.json',this.buyandsell.productQuantity).subscribe(data=>{
         this.thanksMessage();
+      },error =>{
+        if(error.status == 401){
+          this.errorMessage();
+        }
       })
     }
   }
@@ -29,6 +33,16 @@ export class ShoppingcartPage implements OnInit {
     const toast = await this.toastController.create({
       message: 'Thanks for purchasing :)',
       duration: 2000
+    });
+    toast.present();
+  }
+
+  async errorMessage() {
+    const toast = await this.toastController.create({
+      message: "You need to create your own firebase account and you can take help of 'Step video' that is available on my app 'BuildX Projects'.",
+      duration: 4000,
+      position: "bottom",
+      color: "danger"
     });
     toast.present();
   }

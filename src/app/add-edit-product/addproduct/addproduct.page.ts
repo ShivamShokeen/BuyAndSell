@@ -155,7 +155,13 @@ export class AddproductPage implements OnInit {
       console.log(this.addProduct);
       this.http.post('https://buyandsell-58d92.firebaseio.com/addedProducts.json', this.addProduct).subscribe(responseData => {
         this.successAddMessage();
-        window.location.reload();
+        window.location.reload();responseData
+      },error =>{
+        console.log(error)
+        console.log(error.status)
+        if(error.status == 401){
+          this.errorMessage();
+        }
       })
     }
   }
@@ -173,6 +179,16 @@ export class AddproductPage implements OnInit {
       message: "Added successfully.",
       duration: 4000,
       position: "bottom"
+    });
+    toast.present();
+  }
+
+  async errorMessage() {
+    const toast = await this.toastController.create({
+      message: "You need to create your own firebase account and you can take help of 'Step video' that is available on my app 'BuildX Projects'.",
+      duration: 4000,
+      position: "bottom",
+      color: "danger"
     });
     toast.present();
   }

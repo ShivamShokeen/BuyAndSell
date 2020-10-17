@@ -13,27 +13,27 @@
           <ion-item [routerLink]="['/home']">
             <ion-icon name="home" color="secondary"></ion-icon> &nbsp;&nbsp;&nbsp;&nbsp;
             <ion-label>Home</ion-label>
-          </ion-item><br />
+          </ion-item>
 
           <ion-item *ngIf="userCredentials.businessUserUID" [routerLink]="['/addproduct','add']">
             <ion-icon name="add-circle-outline" color="secondary"></ion-icon> &nbsp;&nbsp;&nbsp;
             <ion-label>Add</ion-label>
-          </ion-item><br />
+          </ion-item>
 
           <ion-item *ngIf="userCredentials.businessUserUID" [routerLink]="['/addproduct','edit']">
             <ion-icon name="add-circle-outline" color="secondary"></ion-icon> &nbsp;&nbsp;&nbsp;
             <ion-label>Edit</ion-label>
-          </ion-item><br />
+          </ion-item>
 
           <ion-item *ngIf="userCredentials.UID" [routerLink]="['/shoppingcart']">
             <ion-icon name="cart" color="secondary"></ion-icon> &nbsp;&nbsp;&nbsp;&nbsp;
             <ion-label>Shopping cart</ion-label>
-          </ion-item><br />
+          </ion-item>
 
           <ion-item *ngIf="userCredentials.UID" [routerLink]="['/feedback']">
             <ion-icon name="list" color="secondary"></ion-icon> &nbsp;&nbsp;&nbsp;&nbsp;
             <ion-label>Feedback</ion-label>
-          </ion-item><br />
+          </ion-item>
 
           <ion-item *ngIf="userCredentials.UID" (click)="userLogout()" style="cursor: pointer;">
             <ion-icon name="person-remove-outline" color="danger"></ion-icon> &nbsp;&nbsp;&nbsp;
