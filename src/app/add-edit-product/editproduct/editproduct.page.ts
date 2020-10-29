@@ -128,6 +128,10 @@ export class EditproductPage implements OnInit {
         console.log(data);
         this.successMessage();
         window.location.reload();
+      },error =>{
+        if(error.status == 401){
+          this.errorMessage();
+        }
       });
       // window.location.reload();
       // firebase.auth().signOut().then(() => {
@@ -170,6 +174,16 @@ export class EditproductPage implements OnInit {
       message: 'You need to signin again and I am working on this.',
       duration: 7000,
       position: 'bottom',
+    });
+    toast.present();
+  }
+
+  async errorMessage() {
+    const toast = await this.toastController.create({
+      message: "You need to create your own firebase account and you can take help of 'Step video' that is available on my app 'BuildX Projects'.",
+      duration: 4000,
+      position: "bottom",
+      color: "danger"
     });
     toast.present();
   }
